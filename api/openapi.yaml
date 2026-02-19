@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: pagos_movil.
+  title: Pagos__Movil
   version: 0.1.0
 
 paths:
