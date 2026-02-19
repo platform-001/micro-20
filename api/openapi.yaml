@@ -15,3 +15,23 @@ paths:
                 properties:
                   status:
                     type: string
+  /hello:
+    get:
+      summary: Saludo simple
+      parameters:
+        - name: name
+          in: query
+          required: false
+          schema:
+            type: string
+            default: mundo
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
