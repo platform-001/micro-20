@@ -2,9 +2,15 @@ openapi: 3.0.3
 info:
   title: pagos_movil
   version: 0.1.0
+
+tags:
+  - name: demo
+    description: Endpoints de demo
+
 paths:
   /health:
     get:
+      tags: [demo]
       responses:
         "200":
           description: OK
@@ -15,8 +21,10 @@ paths:
                 properties:
                   status:
                     type: string
+
   /hello:
     get:
+      tags: [demo]
       summary: Saludo simple
       parameters:
         - name: name
