@@ -286,6 +286,7 @@ jobs:
 
           quality_findings = jacoco_markdown(limit=10)
           security_findings = trivy_findings_md("trivy-image.json", limit=15)
+          vulnerability_findings = trivy_findings_md("trivy-fs.json", limit=15)
 
           payload = {
               "identifier": branch_identifier,
@@ -300,7 +301,8 @@ jobs:
                   "image_uri": image_uri,
                   "open_api": openapi,
                   "security_findings": security_findings,
-                  "quality_findings": quality_findings
+                  "quality_findings": quality_findings,
+                  "vulnerability_findings": vulnerability_findings
               }
           }
 
