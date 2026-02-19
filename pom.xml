@@ -8,10 +8,7 @@
 
   <properties>
     <java.version>21</java.version>
-
-    <!-- Spring Boot actualizado para incluir correcciones de seguridad -->
-    <spring-boot.version>3.4.5</spring-boot.version>
-
+    <spring-boot.version>3.2.0</spring-boot.version>
     <openapi.generator.version>7.6.0</openapi.generator.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -20,7 +17,6 @@
 
   <dependencyManagement>
     <dependencies>
-      <!-- Importa el BOM de Spring Boot (gestiona versiones de muchas dependencias) -->
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-dependencies</artifactId>
@@ -28,37 +24,6 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-
-      <!-- Overrides para forzar versiones parcheadas de dependencias críticas -->
-      <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-classic</artifactId>
-        <version>1.4.12</version>
-      </dependency>
-      <dependency>
-        <groupId>ch.qos.logback</groupId>
-        <artifactId>logback-core</artifactId>
-        <version>1.4.12</version>
-      </dependency>
-
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-handler</artifactId>
-        <version>4.1.118.Final</version>
-      </dependency>
-      <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-codec-http2</artifactId>
-        <version>4.1.124.Final</version>
-      </dependency>
-
-      <!-- Optional: forzar spring-core si fuese necesario -->
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-core</artifactId>
-        <version>6.2.11</version>
-      </dependency>
-
     </dependencies>
   </dependencyManagement>
 
@@ -67,23 +32,9 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-
-    <!-- validation -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-validation</artifactId>
-    </dependency>
-
-    <!-- swagger annotations (jakarta) -->
-    <dependency>
-      <groupId>io.swagger.core.v3</groupId>
-      <artifactId>swagger-annotations-jakarta</artifactId>
-      <version>2.2.20</version>
     </dependency>
 
     <!-- tests -->
@@ -102,6 +53,17 @@
       <groupId>io.projectreactor</groupId>
       <artifactId>reactor-test</artifactId>
       <scope>test</scope>
+    </dependency>
+
+    <!-- new dependency-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations-jakarta</artifactId>
+      <version>2.2.20</version>
     </dependency>
 
   </dependencies>
@@ -170,7 +132,6 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -179,18 +140,16 @@
           <release>21</release>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
-        <version>3.4.3</version>
+        <version>3.4.3</version> <!-- Use the latest version from Maven Central -->
         <configuration>
           <from>
-            <image>eclipse-temurin:21-jre</image>
+            <image>eclipse-temurin:21-jre</image> <!-- Specify a Java 21 compatible base image -->
           </from>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 </project>
